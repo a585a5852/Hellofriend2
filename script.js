@@ -127,7 +127,7 @@ function update() {
         boxSpeed -= 0.00025
 
         //ตรวจสอบเงื่อนไขการชนของอุปวรรค
-        if(onCollision(player,box) && time < maxTime && lives >= 0) {
+        if(onCollision(player,box) && time <= maxTime && lives >= 0) {
             gameOver = true
 
             //แจ้งเตือนผู้เล่น
@@ -138,7 +138,7 @@ function update() {
             context.font = "normal bold 30px Arial"
             context.fillText("Score : "+ (score), board.width / 2 , 200)
         }
-        else if (time > maxTime && lives >= 0) {
+        else if (time == maxTime && lives >= 0) {
             gameOver = true
             context.font = "normal bold 40px Arial"
             context.textAlign = "center"
@@ -180,7 +180,7 @@ function createBox() {
         boxesArray.shift()
     }
 
-    let randomTime = (Math.random() * 1500) + 1300
+    let randomTime = (Math.random() * 1000) + 1300
     setTimeout(createBox, randomTime)
 }
 
@@ -216,3 +216,4 @@ function restartGame() {
     
 
 }
+
