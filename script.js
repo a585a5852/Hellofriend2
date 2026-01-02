@@ -22,6 +22,7 @@ let boardWidth = 800
 let boardHeight = 300  
 let context
 let lives = 2
+let restarting = false
 
 //ตั้งค่าตัวละครเกม
 
@@ -195,6 +196,9 @@ function onCollision(obj1 , obj2) {
 //Restart Game
 function restartGame() {
 
+    if (restarting) return
+    restarting = true
+
     if (lives <= 0) {
         gameOver = true
         context.textAlign = "center"
@@ -213,8 +217,13 @@ function restartGame() {
     player.y = playerY
     lives--
     
-    
+    requestAnimationFrame(update)
 
+    // ปลดล็อกหลัง 300ms
+    setTimeout(() => {
+        restarting = false
+    }, 200)
 }
+
 
 
