@@ -180,7 +180,7 @@ function createBox() {
         boxesArray.shift()
     }
 
-    let randomTime = (Math.random() * 2000) + 1300
+    let randomTime = (Math.random() * 1500) + 1300
     setTimeout(createBox, randomTime)
 }
 
@@ -214,4 +214,5 @@ function restartGame() {
     lives--
     
     
+
 }
