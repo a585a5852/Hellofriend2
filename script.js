@@ -112,7 +112,7 @@ function update() {
     context.fillText("Lives : " + lives, 359 , 30)
 
     //นับเวลา
-    let maxTime = 59
+    let maxTime = 59.9
     
     time += 0.01;
     context.font = "normal bold 20px Arial"
@@ -216,4 +216,5 @@ function restartGame() {
     
 
 }
+
 
