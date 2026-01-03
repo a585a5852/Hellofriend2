@@ -90,7 +90,8 @@ window.onload = function() {
 function update() {
     requestAnimationFrame(update) //Update animation ตลอดเวลา
 
-    if(gameOver) { //ตรวจสอบว่าเกม over หรือเปล่า
+    //ตรวจสอบว่าเกม over หรือเปล่า
+    if(gameOver) { 
         return
     }
 
@@ -128,8 +129,9 @@ function update() {
         boxSpeed -= 0.00025
 
         //ตรวจสอบเงื่อนไขการชนของอุปวรรค
-        if(onCollision(player,box) && time <= maxTime && lives >= 0) {
+        if(onCollision(player,box) && time <= maxTime && lives > 0) {
             gameOver = true
+            
 
             //แจ้งเตือนผู้เล่น
 
@@ -145,6 +147,17 @@ function update() {
             context.textAlign = "center"
             context.fillText("Congratulation!!", board.width / 2 , board.height / 2)
             context.font = "normal bold 30px Arial"
+            context.fillText("Score : "+ (score), board.width / 2 , 200)
+        }
+        else if (onCollision(player,box) && time <= maxTime && lives == 0) {
+            gameOver = true
+
+            context.textAlign = "center"
+            context.font = "normal bold 100px Arial"
+            context.fillText("You fail", board.width / 2 , board.height / 2)
+
+            context.font = "normal bold 30px Arial"
+            context.textAlign = "center"
             context.fillText("Score : "+ (score), board.width / 2 , 200)
         }
     }
@@ -204,7 +217,6 @@ function restartGame() {
         context.textAlign = "center"
         context.font = "normal bold 100px Arial"
         context.fillText("You fail", board.width / 2 , board.height / 2)
-        
         return
     }
     
@@ -215,15 +227,16 @@ function restartGame() {
     velocityY = 0
     boxesArray = []
     player.y = playerY
+    boxSpeed = -3
     lives--
-    
-    requestAnimationFrame(update)
 
-    // ปลดล็อกหลัง 300ms
+    
+
     setTimeout(() => {
         restarting = false
     }, 200)
 }
+
 
 
 
