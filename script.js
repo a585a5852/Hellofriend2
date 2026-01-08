@@ -141,7 +141,7 @@ function update() {
             context.font = "normal bold 30px Arial"
             context.fillText("Score : "+ (score), board.width / 2 , 200)
         }
-        else if (time == maxTime && lives >= 0) {
+        else if (time >= maxTime && lives >= 0) {
             gameOver = true
             context.font = "normal bold 40px Arial"
             context.textAlign = "center"
@@ -236,6 +236,7 @@ function restartGame() {
         restarting = false
     }, 200)
 }
+
 
 
 
